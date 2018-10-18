@@ -31,10 +31,14 @@ public class IocApplication {
 
     private static void basicDependencyInjectionTest(){
         ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
-        Person person = ctx.getBean(BussinessPerson.class);
-        Person person2 = ctx.getBean(BussinessPersonAwareLife.class);
-        person.service();
-        person2.service();
+        Person person1 = ctx.getBean(BussinessPerson.class);
+        Person person2 = ctx.getBean(BussinessPerson.class);
+
+        person1.service();
+        System.out.println(person1 == person2);
+
+        Person person3 = ctx.getBean(BussinessPersonAwareLife.class);
+        person3.service();
     }
 
 

@@ -25,5 +25,11 @@
 ### @Qualifier
 指定名称以唯一匹配
 
+### @Conditional
+条件注解
+
+### @Scope
+指定作用域
+
 ##  参考
 [spring doc](https://docs.spring.io/spring/docs/5.1.1.RELEASE/spring-framework-reference/core.html#beans-required-annotation)  
