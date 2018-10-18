@@ -8,8 +8,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class BussinessPerson implements Person {
-    @Autowired
-    @Qualifier("dog")
+
     private Animal animal;
 
     @Override
@@ -18,7 +17,10 @@ public class BussinessPerson implements Person {
     }
 
     @Override
+    @Autowired
+    @Qualifier("dog")
     public void setAnimal(Animal animal) {
+        System.out.println("delay inject test.");
         this.animal = animal;
     }
 }

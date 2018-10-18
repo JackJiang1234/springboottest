@@ -6,7 +6,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ComponentScan(basePackages = {"com.jack.ioc.pojo"})
+@ComponentScan(basePackages = {"com.jack.ioc.pojo"}, lazyInit = true)
 public class AppConfig {
 
     @Bean(name = "user")

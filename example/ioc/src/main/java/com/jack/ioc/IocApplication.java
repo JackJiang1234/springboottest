@@ -2,6 +2,7 @@ package com.jack.ioc;
 
 import com.jack.ioc.config.AppConfig;
 import com.jack.ioc.pojo.BussinessPerson;
+import com.jack.ioc.pojo.BussinessPersonAwareLife;
 import com.jack.ioc.pojo.User;
 import com.jack.ioc.pojo.User2;
 import com.jack.ioc.pojo.definition.Person;
@@ -31,6 +32,10 @@ public class IocApplication {
     private static void basicDependencyInjectionTest(){
         ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
         Person person = ctx.getBean(BussinessPerson.class);
+        Person person2 = ctx.getBean(BussinessPersonAwareLife.class);
         person.service();
+        person2.service();
     }
+
+
 }

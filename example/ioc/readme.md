@@ -24,3 +24,6 @@
 
 ### @Qualifier
 指定名称以唯一匹配
+
+##  参考
+[spring doc](https://docs.spring.io/spring/docs/5.1.1.RELEASE/spring-framework-reference/core.html#beans-required-annotation)  
