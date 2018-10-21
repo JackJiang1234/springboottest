@@ -1,5 +1,6 @@
 package com.jack.aop.example;
 
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.springframework.stereotype.Component;
@@ -12,19 +13,20 @@ public class UserAspect {
      * 切点定义
      * execution 匹配连接点的执行方法
      * arg() 限制方法参数
+     *
      * @args() 通过方法参数注解进行限定
      * this()
      * target
-     * @target()
-     * https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/core.html#aop-pointcuts
-     * */
+     * @target() https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/core.html#aop-pointcuts
+     */
     @Pointcut("execution(* com.jack.aop.example.UserServiceImpl.printUser(..))")
     public void pointCut() {
 
     }
 
-    @Before("pointCut()")
-    public void before() {
+    @Before("pointCut() && args(user)")
+    public void before(JoinPoint point, User user) {
+
         System.out.println("before...");
     }
 
@@ -49,4 +51,7 @@ public class UserAspect {
         jp.proceed();
         System.out.println("around after...");
     }
+
+    @DeclareParents(value = "com.jack.aop.example.UserServiceImpl+", defaultImpl = UserValidatorImpl.class)
+    public UserValidator userValidator;
 }
