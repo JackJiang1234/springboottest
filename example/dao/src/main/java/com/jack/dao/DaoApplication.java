@@ -12,6 +12,6 @@ public class DaoApplication {
     public static void main(String[] args) {
         ApplicationContext ctx = SpringApplication.run(DaoApplication.class, args);
         DataSource dataSource = ctx.getBean(DataSource.class);
-		System.out.println(dataSource.getClass().getSimpleName());
+		System.out.println(dataSource.getClass().getCanonicalName());
     }
 }
