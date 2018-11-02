@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.ResultSet;
 import java.util.List;
@@ -44,9 +45,12 @@ public class JdbcTmplUserServiceImpl implements JdbcTmplUserService {
     }
 
     @Override
+    @Transactional
     public int insertUser(User user) {
         String sql = "insert into t_user(user_name, sex, note)values(?, ?, ?);";
-        return jdbcTemplate.update(sql, user.getUserName(), user.getSex().getId(), user.getNote());
+        int result = jdbcTemplate.update(sql, user.getUserName(), user.getSex().getId(), user.getNote());
+        //throw  new RuntimeException("test");
+        return  result;
     }
 
     @Override

@@ -21,7 +21,9 @@ public class DaoApplication {
     public static void main(String[] args) {
         //testUserJdbcTemplate(args);
         //testUserMyBatis(args);
-        testUseJdbcService(args);
+        //testUseJdbcService(args);
+
+        testTransaction(args);
     }
 
     static void testChangeDataSourceType(String[] args){
@@ -61,5 +63,16 @@ public class DaoApplication {
         ApplicationContext ctx = SpringApplication.run(DaoApplication.class, args);
         JdbcService userService = ctx.getBean(JdbcService.class);
         System.out.println("testUseJdbcService:" + userService.insertUser("jack", "test"));
+    }
+
+    static void testTransaction(String[] args){
+        ApplicationContext ctx = SpringApplication.run(DaoApplication.class, args);
+        JdbcTmplUserService userService = ctx.getBean(JdbcTmplUserService.class);
+
+        User u = new User();
+        u.setUserName("jack");
+        u.setSex(SexEnum.MALE);
+        u.setNote("just for test.");
+        System.out.println("insert user:" + userService.insertUser(u));
     }
 }
