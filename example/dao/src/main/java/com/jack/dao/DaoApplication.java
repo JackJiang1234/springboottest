@@ -2,6 +2,7 @@ package com.jack.dao;
 
 import com.jack.dao.pojo.SexEnum;
 import com.jack.dao.pojo.User;
+import com.jack.dao.service.JdbcService;
 import com.jack.dao.service.JdbcTmplUserService;
 import com.jack.dao.service.MyBatisUserService;
 import org.mybatis.spring.annotation.MapperScan;
@@ -19,7 +20,8 @@ public class DaoApplication {
 
     public static void main(String[] args) {
         //testUserJdbcTemplate(args);
-        testUserMyBatis(args);
+        //testUserMyBatis(args);
+        testUseJdbcService(args);
     }
 
     static void testChangeDataSourceType(String[] args){
@@ -53,5 +55,11 @@ public class DaoApplication {
         ApplicationContext ctx = SpringApplication.run(DaoApplication.class, args);
         MyBatisUserService userService = ctx.getBean(MyBatisUserService.class);
         System.out.println("mybatis get user:" + userService.getUser(Long.valueOf(8)).getUserName());
+    }
+
+    static void testUseJdbcService(String[] args){
+        ApplicationContext ctx = SpringApplication.run(DaoApplication.class, args);
+        JdbcService userService = ctx.getBean(JdbcService.class);
+        System.out.println("testUseJdbcService:" + userService.insertUser("jack", "test"));
     }
 }
