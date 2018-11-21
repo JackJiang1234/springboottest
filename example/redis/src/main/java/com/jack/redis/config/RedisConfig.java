@@ -50,10 +50,11 @@ public class RedisConfig {
         return redisTemplate;
     }
 
+    /*
     @Bean(name="stringRedisTemplate")
     public StringRedisTemplate initStringRedisTemplate(){
         StringRedisTemplate stringRedisTemplate = new StringRedisTemplate();
         stringRedisTemplate.setConnectionFactory(initRedisConnectionFactory());
         return stringRedisTemplate;
-    }
+    }*/
 }
